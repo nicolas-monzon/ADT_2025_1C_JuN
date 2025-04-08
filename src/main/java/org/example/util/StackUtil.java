@@ -29,6 +29,14 @@ public class StackUtil {
         return copy;
     }
 
+    public static void print(Stack stack) {
+        Stack aux = copy(stack);
+        while(!aux.isEmpty()) {
+            System.out.println(aux.getTop());
+            aux.remove();
+        }
+    }
+
     public static int size(Stack stack) {
         if(stack.isEmpty()) {
             return 0;
