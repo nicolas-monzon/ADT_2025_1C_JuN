@@ -40,4 +40,5 @@ public class StaticStack implements Stack {
     public boolean isEmpty() {
         return count == 0;
     }
+
 }
