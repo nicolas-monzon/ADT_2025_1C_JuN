@@ -26,5 +26,5 @@ public class PriorityQueueUtil {
 
         return copy;
     }
-    
+
 }
