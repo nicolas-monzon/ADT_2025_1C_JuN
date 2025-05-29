@@ -1,24 +1,26 @@
 package org.example.model;
 
+import org.example.util.SetUtil;
+
 import java.util.Random;
 
-public class StaticSet implements Set {
+public class StaticSetOfSets implements SetOfSets {
 
     private static final int MAX_SIZE = 10000;
-    private final int[] array;
+    private final Set[] array;
     private int count;
     private final Random random;
 
-    public StaticSet() {
-        this.array = new int[MAX_SIZE];
+    public StaticSetOfSets() {
+        this.array = new Set[MAX_SIZE];
         this.count = 0;
         this.random = new Random();
     }
 
     @Override
-    public void add(int a) {
+    public void add(Set a) {
         for(int i = 0; i < count; i++) {
-            if(array[i] == a) {
+            if(SetUtil.equals(array[i], a)) {
                 return;
             }
         }
@@ -27,9 +29,9 @@ public class StaticSet implements Set {
     }
 
     @Override
-    public void remove(int a) {
+    public void remove(Set a) {
         for(int i = 0; i < count; i++) {
-            if(array[i] == a) {
+            if(SetUtil.equals(array[i], a)) {
                 array[i] = array[count-1];
                 count--;
                 return;
@@ -38,7 +40,7 @@ public class StaticSet implements Set {
     }
 
     @Override
-    public int choose() {
+    public Set choose() {
         if(this.isEmpty()) {
             throw new RuntimeException("No se puede elegir de un conjunto vacío");
         }
