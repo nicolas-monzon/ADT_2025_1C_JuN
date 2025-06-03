@@ -2,6 +2,8 @@ package org.example.model;
 
 import org.example.model.node.MultipleDictionary;
 
+import javax.management.MXBean;
+
 public class StaticMultipleDictionary implements MultipleDictionary {
 
     private static final int MAX_SIZE = 10000;
@@ -22,6 +24,7 @@ public class StaticMultipleDictionary implements MultipleDictionary {
             }
         }
 
+        pairs[count] = new int[MAX_SIZE];
         pairs[count][0] = k;
         pairs[count][1] = 1;
         pairs[count][2] = v;
