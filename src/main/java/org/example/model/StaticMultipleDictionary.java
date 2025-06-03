@@ -2,8 +2,6 @@ package org.example.model;
 
 import org.example.model.node.MultipleDictionary;
 
-import javax.management.MXBean;
-
 public class StaticMultipleDictionary implements MultipleDictionary {
 
     private static final int MAX_SIZE = 10000;
@@ -16,8 +14,8 @@ public class StaticMultipleDictionary implements MultipleDictionary {
 
     @Override
     public void add(int k, int v) {
-        for(int i = 0; i < count; i++) {
-            if(pairs[i][0] == k) {
+        for (int i = 0; i < count; i++) {
+            if (pairs[i][0] == k) {
                 pairs[i][pairs[i][1] + 2] = v;
                 pairs[i][1]++;
                 return;
@@ -33,15 +31,15 @@ public class StaticMultipleDictionary implements MultipleDictionary {
 
     @Override
     public void remove(int key, int value) {
-        for(int i = 0; i < count; i++) {
-            if(pairs[i][0] == key) {
-                for(int j = 0; j < pairs[i][1]; j++) {
-                    if(pairs[i][j + 2] == value) {
-                        for(int k = j; k < pairs[i][1] - 1; k++) {
+        for (int i = 0; i < count; i++) {
+            if (pairs[i][0] == key) {
+                for (int j = 0; j < pairs[i][1]; j++) {
+                    if (pairs[i][j + 2] == value) {
+                        for (int k = j; k < pairs[i][1] - 1; k++) {
                             pairs[i][k + 2] = pairs[i][k + 3];
                         }
                         pairs[i][1]--;
-                        if(pairs[i][1] == 0) {
+                        if (pairs[i][1] == 0) {
                             pairs[i] = pairs[count - 1];
                             count--;
                         }
@@ -56,7 +54,7 @@ public class StaticMultipleDictionary implements MultipleDictionary {
     @Override
     public Set getKeys() {
         Set result = new StaticSet();
-        for(int i = 0; i < count; i++) {
+        for (int i = 0; i < count; i++) {
             result.add(pairs[i][0]);
         }
         return result;
@@ -65,9 +63,9 @@ public class StaticMultipleDictionary implements MultipleDictionary {
     @Override
     public List getValues(int k) {
         List result = new DLinkedList();
-        for(int i = 0; i < count; i++) {
-            if(pairs[i][0] == k) {
-                for(int j = 0; j < pairs[i][1]; j++) {
+        for (int i = 0; i < count; i++) {
+            if (pairs[i][0] == k) {
+                for (int j = 0; j < pairs[i][1]; j++) {
                     result.add(pairs[i][j + 2]);
                 }
                 return result;

@@ -6,8 +6,8 @@ public class StaticSet implements Set {
 
     private static final int MAX_SIZE = 10000;
     private final int[] array;
-    private int count;
     private final Random random;
+    private int count;
 
     public StaticSet() {
         this.array = new int[MAX_SIZE];
@@ -17,8 +17,8 @@ public class StaticSet implements Set {
 
     @Override
     public void add(int a) {
-        for(int i = 0; i < count; i++) {
-            if(array[i] == a) {
+        for (int i = 0; i < count; i++) {
+            if (array[i] == a) {
                 return;
             }
         }
@@ -28,9 +28,9 @@ public class StaticSet implements Set {
 
     @Override
     public void remove(int a) {
-        for(int i = 0; i < count; i++) {
-            if(array[i] == a) {
-                array[i] = array[count-1];
+        for (int i = 0; i < count; i++) {
+            if (array[i] == a) {
+                array[i] = array[count - 1];
                 count--;
                 return;
             }
@@ -39,7 +39,7 @@ public class StaticSet implements Set {
 
     @Override
     public int choose() {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             throw new RuntimeException("No se puede elegir de un conjunto vacío");
         }
         int randomIndex = random.nextInt(count);

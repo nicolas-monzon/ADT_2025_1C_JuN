@@ -18,9 +18,11 @@ public interface Stack {
      * tal que esa estructura va a ser linal y vamos a considerar
      * un índice especial para guardar el tope y el objetivo es devolver el
      * valor contenido en esa posición
+     *
      * @return el tope de la pila
      */
     int getTop();
+
     boolean isEmpty();
 
 }

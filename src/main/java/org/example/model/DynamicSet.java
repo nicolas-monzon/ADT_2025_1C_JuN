@@ -16,20 +16,20 @@ public class DynamicSet implements Set {
 
     @Override
     public void add(int a) {
-        if(isEmpty()) {
+        if (isEmpty()) {
             node = new Node(a, null);
             size++;
             return;
         }
 
         Node current = this.node;
-        while(current.getNext() != null) {
-            if(current.getValue() == a) {
+        while (current.getNext() != null) {
+            if (current.getValue() == a) {
                 return;
             }
             current = current.getNext();
         }
-        if(current.getValue() == a) {
+        if (current.getValue() == a) {
             return;
         }
         current.setNext(new Node(a, null));
@@ -38,12 +38,12 @@ public class DynamicSet implements Set {
 
     @Override
     public void remove(int a) {
-        if(isEmpty()) {
+        if (isEmpty()) {
             return;
         }
 
-        if(this.node.getNext() == null) {
-            if(this.node.getValue() == a) {
+        if (this.node.getNext() == null) {
+            if (this.node.getValue() == a) {
                 this.node = null;
                 size--;
             }
@@ -53,8 +53,8 @@ public class DynamicSet implements Set {
         Node previous = node;
         Node current = node.getNext();
 
-        while(current.getNext() != null) {
-            if(current.getValue() == a) {
+        while (current.getNext() != null) {
+            if (current.getValue() == a) {
                 previous.setNext(current.getNext());
                 size--;
                 return;
@@ -64,7 +64,7 @@ public class DynamicSet implements Set {
             current = current.getNext();
         }
 
-        if(current.getValue() == a) {
+        if (current.getValue() == a) {
             previous.setNext(current.getNext());
             size--;
         }
@@ -72,15 +72,15 @@ public class DynamicSet implements Set {
 
     @Override
     public int choose() {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             throw new RuntimeException("No se puede elegir de un conjunto vacío");
         }
         int randomIndex = random.nextInt(size);
 
         Node current = this.node;
         int i = 0;
-        while(current != null) {
-            if(i == randomIndex) {
+        while (current != null) {
+            if (i == randomIndex) {
                 return current.getValue();
             }
             i++;

@@ -13,13 +13,13 @@ public class PriorityQueueUtil {
         PriorityQueue copy = new StaticPriorityQueue();
         PriorityQueue aux = new StaticPriorityQueue();
 
-        while(!priorityQueue.isEmpty()) {
+        while (!priorityQueue.isEmpty()) {
             copy.add(priorityQueue.getFirst(), priorityQueue.getPriority());
             aux.add(priorityQueue.getFirst(), priorityQueue.getPriority());
             priorityQueue.remove();
         }
 
-        while(!aux.isEmpty()) {
+        while (!aux.isEmpty()) {
             priorityQueue.add(aux.getFirst(), aux.getPriority());
             aux.remove();
         }

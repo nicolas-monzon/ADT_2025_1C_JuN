@@ -8,13 +8,13 @@ public class DLinkedList implements List {
 
     @Override
     public void add(int a) {
-        if(node == null) {
+        if (node == null) {
             node = new DLinkedListNode(a, null, null);
             return;
         }
 
         DLinkedListNode candidate = node;
-        while(candidate.getNext() != null) {
+        while (candidate.getNext() != null) {
             candidate = candidate.getNext();
         }
 
@@ -23,18 +23,18 @@ public class DLinkedList implements List {
 
     @Override
     public void remove() {
-        if(node == null) {
+        if (node == null) {
             throw new RuntimeException("List is empty");
         }
 
-        if(node.getNext() == null) {
+        if (node.getNext() == null) {
             node = null;
             return;
         }
 
         DLinkedListNode current = node;
 
-        while(current.getNext() != null) {
+        while (current.getNext() != null) {
             current = current.getNext();
         }
 
@@ -43,13 +43,13 @@ public class DLinkedList implements List {
 
     @Override
     public int size() {
-        if(node == null) {
+        if (node == null) {
             return 0;
         }
         int size = 0;
 
         DLinkedListNode current = node;
-        while(current != null) {
+        while (current != null) {
             size++;
             current = current.getNext();
         }
@@ -59,17 +59,17 @@ public class DLinkedList implements List {
 
     @Override
     public int get(int index) {
-        if(node == null) {
+        if (node == null) {
             throw new RuntimeException("List is empty");
         }
-        if(index < 0) {
+        if (index < 0) {
             throw new RuntimeException("Index is negative");
         }
 
         int count = 0;
         DLinkedListNode current = node;
-        while(current != null) {
-            if(count == index) {
+        while (current != null) {
+            if (count == index) {
                 return current.getValue();
             }
             count++;

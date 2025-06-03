@@ -13,13 +13,13 @@ public class StackUtil {
         Stack copy = new StaticStack();
         Stack aux = new StaticStack();
 
-        while(!stack.isEmpty()) {
+        while (!stack.isEmpty()) {
             int top = stack.getTop();
             aux.add(top);
             stack.remove();
         }
 
-        while(!aux.isEmpty()) {
+        while (!aux.isEmpty()) {
             int top = aux.getTop();
             copy.add(top);
             stack.add(top);
@@ -31,14 +31,14 @@ public class StackUtil {
 
     public static void print(Stack stack) {
         Stack aux = copy(stack);
-        while(!aux.isEmpty()) {
+        while (!aux.isEmpty()) {
             System.out.println(aux.getTop());
             aux.remove();
         }
     }
 
     public static int size(Stack stack) {
-        if(stack.isEmpty()) {
+        if (stack.isEmpty()) {
             return 0;
         }
         int top = stack.getTop();
@@ -52,19 +52,19 @@ public class StackUtil {
         Stack aux = new StaticStack();
         Stack aux2 = new StaticStack();
 
-        while(!stack.isEmpty()) {
+        while (!stack.isEmpty()) {
             int top = stack.getTop();
             aux.add(top);
             stack.remove();
         }
 
-        while(!aux.isEmpty()) {
+        while (!aux.isEmpty()) {
             int top = aux.getTop();
             aux2.add(top);
             aux.remove();
         }
 
-        while(!aux2.isEmpty()) {
+        while (!aux2.isEmpty()) {
             int top = aux2.getTop();
             stack.add(top);
             aux2.remove();
@@ -78,19 +78,19 @@ public class StackUtil {
     }
 
     public static void sortAux(Stack stack) {
-        if(stack.isEmpty()) {
+        if (stack.isEmpty()) {
             return;
         }
 
         int top = stack.getTop();
         stack.remove();
-        if(stack.isEmpty()) {
+        if (stack.isEmpty()) {
             stack.add(top);
             return;
         }
 
         int total = size(stack) - 1;
-        for(int i = 0; i < total; i++) {
+        for (int i = 0; i < total; i++) {
             move(stack);
         }
     }
@@ -103,8 +103,8 @@ public class StackUtil {
     }
 
     private static boolean equalsAux(Stack stack, Stack stack2) {
-        while(!stack.isEmpty()) {
-            if(stack.getTop() != stack2.getTop()) {
+        while (!stack.isEmpty()) {
+            if (stack.getTop() != stack2.getTop()) {
                 return false;
             }
             stack.remove();
@@ -114,13 +114,13 @@ public class StackUtil {
     }
 
     public static void move(Stack stack) {
-        if(stack.isEmpty()) {
+        if (stack.isEmpty()) {
             return;
         }
 
         int top = stack.getTop();
         stack.remove();
-        if(stack.isEmpty()) {
+        if (stack.isEmpty()) {
             stack.add(top);
             return;
         }
@@ -128,7 +128,7 @@ public class StackUtil {
         int next = stack.getTop();
         stack.remove();
 
-        if(top > next) {
+        if (top > next) {
             stack.add(top);
             move(stack);
         }

@@ -25,11 +25,11 @@ public class LinkedListV2 implements List {
 
     @Override
     public void remove() {
-        if(node == null) {
+        if (node == null) {
             throw new RuntimeException("List is empty");
         }
 
-        if(node.getNext() == null) {
+        if (node.getNext() == null) {
             node = null;
             last = null;
             size--;
@@ -39,7 +39,7 @@ public class LinkedListV2 implements List {
         Node previous = node;
         Node current = node.getNext();
 
-        while(current.getNext() != null) {
+        while (current.getNext() != null) {
             previous = current;
             current = current.getNext();
         }
@@ -56,17 +56,17 @@ public class LinkedListV2 implements List {
 
     @Override
     public int get(int index) {
-        if(node == null) {
+        if (node == null) {
             throw new RuntimeException("List is empty");
         }
-        if(index < 0 || index >= size) {
+        if (index < 0 || index >= size) {
             throw new RuntimeException("Index is negative");
         }
 
         int count = 0;
         Node current = node;
-        while(current.getNext() != null) {
-            if(count == index) {
+        while (current.getNext() != null) {
+            if (count == index) {
                 return current.getValue();
             }
             count++;

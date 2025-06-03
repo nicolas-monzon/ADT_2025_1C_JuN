@@ -10,16 +10,16 @@ public class DynamicMultipleDictionary implements MultipleDictionary {
 
     @Override
     public void add(int k, int v) {
-        if(node == null) {
+        if (node == null) {
             node = new KeyNode(k, null, new ValueNode(v, null));
             return;
         }
 
         KeyNode candidate = node;
-        while(candidate.getNext() != null) {
-            if(candidate.getKey() == k) {
+        while (candidate.getNext() != null) {
+            if (candidate.getKey() == k) {
                 ValueNode current = candidate.getValues();
-                while(current != null) {
+                while (current.getNext() != null) {
                     current = current.getNext();
                 }
                 current.setNext(new ValueNode(v, null));
@@ -27,9 +27,9 @@ public class DynamicMultipleDictionary implements MultipleDictionary {
             candidate = candidate.getNext();
         }
 
-        if(candidate.getKey() == k) {
+        if (candidate.getKey() == k) {
             ValueNode current = candidate.getValues();
-            while(current != null) {
+            while (current.getNext() != null) {
                 current = current.getNext();
             }
             current.setNext(new ValueNode(v, null));
@@ -39,29 +39,28 @@ public class DynamicMultipleDictionary implements MultipleDictionary {
 
     @Override
     public void remove(int k, int v) {
-        if(node == null) {
+        if (node == null) {
             return;
         }
 
-        if(node.getNext() == null) {
-            if(node.getKey() == k) {
-                if(node.getValues().getNext() == null) {
-                    if(node.getValues().getValue() == v) {
+        if (node.getNext() == null) {
+            if (node.getKey() == k) {
+                if (node.getValues().getNext() == null) {
+                    if (node.getValues().getValue() == v) {
                         this.node = null;
-                        return;
                     }
                     return;
                 }
 
-                if(node.getValues().getValue() == v) {
+                if (node.getValues().getValue() == v) {
                     node.setValues(node.getValues().getNext());
                     return;
                 }
 
                 ValueNode previous = node.getValues();
                 ValueNode current = node.getValues().getNext();
-                while(current != null) {
-                    if(current.getValue() == v) {
+                while (current != null) {
+                    if (current.getValue() == v) {
                         previous.setNext(current.getNext());
                         return;
                     }
@@ -75,25 +74,24 @@ public class DynamicMultipleDictionary implements MultipleDictionary {
         KeyNode previous = node;
         KeyNode current = node.getNext();
 
-        while(current.getNext() != null) {
-            if(current.getKey() == k) {
-                if(current.getValues().getNext() == null) {
-                    if(current.getValues().getValue() == v) {
+        while (current.getNext() != null) {
+            if (current.getKey() == k) {
+                if (current.getValues().getNext() == null) {
+                    if (current.getValues().getValue() == v) {
                         previous.setNext(current.getNext());
-                        return;
                     }
                     return;
                 }
 
-                if(current.getValues().getValue() == v) {
+                if (current.getValues().getValue() == v) {
                     current.setValues(current.getValues().getNext());
                     return;
                 }
 
                 ValueNode previousValue = node.getValues();
                 ValueNode currentVlue = node.getValues().getNext();
-                while(currentVlue != null) {
-                    if(currentVlue.getValue() == v) {
+                while (currentVlue != null) {
+                    if (currentVlue.getValue() == v) {
                         previousValue.setNext(currentVlue.getNext());
                         return;
                     }
@@ -105,24 +103,23 @@ public class DynamicMultipleDictionary implements MultipleDictionary {
             current = current.getNext();
         }
 
-        if(current.getKey() == k) {
-            if(current.getValues().getNext() == null) {
-                if(current.getValues().getValue() == v) {
+        if (current.getKey() == k) {
+            if (current.getValues().getNext() == null) {
+                if (current.getValues().getValue() == v) {
                     previous.setNext(current.getNext());
-                    return;
                 }
                 return;
             }
 
-            if(current.getValues().getValue() == v) {
+            if (current.getValues().getValue() == v) {
                 current.setValues(current.getValues().getNext());
                 return;
             }
 
             ValueNode previousValue = node.getValues();
             ValueNode currentVlue = node.getValues().getNext();
-            while(currentVlue != null) {
-                if(currentVlue.getValue() == v) {
+            while (currentVlue != null) {
+                if (currentVlue.getValue() == v) {
                     previousValue.setNext(currentVlue.getNext());
                     return;
                 }
@@ -136,7 +133,7 @@ public class DynamicMultipleDictionary implements MultipleDictionary {
     public Set getKeys() {
         Set keys = new DynamicSet();
         KeyNode current = node;
-        while(current != null) {
+        while (current != null) {
             keys.add(current.getKey());
             current = current.getNext();
         }
@@ -146,11 +143,11 @@ public class DynamicMultipleDictionary implements MultipleDictionary {
     @Override
     public List getValues(int k) {
         KeyNode current = node;
-        while(current != null) {
-            if(current.getKey() == k) {
+        while (current != null) {
+            if (current.getKey() == k) {
                 ValueNode valueNode = current.getValues();
                 List list = new DLinkedList();
-                while(valueNode != null) {
+                while (valueNode != null) {
                     list.add(valueNode.getValue());
                     valueNode = valueNode.getNext();
                 }

@@ -9,20 +9,20 @@ public class DynamicDictionary implements Dictionary {
 
     @Override
     public void add(int k, int v) {
-        if(node == null) {
+        if (node == null) {
             node = new KeyNode(k, null, new ValueNode(v, null));
             return;
         }
 
         KeyNode candidate = node;
-        while(candidate.getNext() != null) {
-            if(candidate.getKey() == k) {
+        while (candidate.getNext() != null) {
+            if (candidate.getKey() == k) {
                 throw new RuntimeException("La clave ya exista");
             }
             candidate = candidate.getNext();
         }
 
-        if(candidate.getKey() == k) {
+        if (candidate.getKey() == k) {
             throw new RuntimeException("La clave ya exista");
         }
         candidate.setNext(new KeyNode(k, null, new ValueNode(v, null)));
@@ -30,12 +30,12 @@ public class DynamicDictionary implements Dictionary {
 
     @Override
     public void remove(int k, int v) {
-        if(node == null) {
+        if (node == null) {
             return;
         }
 
-        if(node.getNext() == null) {
-            if(node.getKey() == k) {
+        if (node.getNext() == null) {
+            if (node.getKey() == k) {
                 node = null;
             }
             return;
@@ -44,8 +44,8 @@ public class DynamicDictionary implements Dictionary {
         KeyNode previous = node;
         KeyNode current = node.getNext();
 
-        while(current.getNext() != null) {
-            if(current.getKey() == k) {
+        while (current.getNext() != null) {
+            if (current.getKey() == k) {
                 previous.setNext(current.getNext());
                 return;
             }
@@ -53,7 +53,7 @@ public class DynamicDictionary implements Dictionary {
             current = current.getNext();
         }
 
-        if(current.getKey() == k) {
+        if (current.getKey() == k) {
             previous.setNext(current.getNext());
         }
     }
@@ -62,7 +62,7 @@ public class DynamicDictionary implements Dictionary {
     public Set getKeys() {
         Set keys = new DynamicSet();
         KeyNode current = node;
-        while(current != null) {
+        while (current != null) {
             keys.add(current.getKey());
             current = current.getNext();
         }
@@ -72,8 +72,8 @@ public class DynamicDictionary implements Dictionary {
     @Override
     public int getValue(int k) {
         KeyNode current = node;
-        while(current != null) {
-            if(current.getKey() == k) {
+        while (current != null) {
+            if (current.getKey() == k) {
                 return current.getValues().getValue();
             }
             current = current.getNext();

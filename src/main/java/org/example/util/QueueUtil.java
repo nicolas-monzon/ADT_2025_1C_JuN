@@ -13,14 +13,14 @@ public class QueueUtil {
         Queue result = new StaticQueue();
         Queue aux = new StaticQueue();
 
-        while(!queue.isEmpty()) {
+        while (!queue.isEmpty()) {
             int first = queue.getFirst();
             aux.add(first);
             result.add(first);
             queue.remove();
         }
 
-        while(!aux.isEmpty()) {
+        while (!aux.isEmpty()) {
             int first = aux.getFirst();
             queue.add(first);
             aux.remove();
@@ -32,12 +32,12 @@ public class QueueUtil {
     public static void print(Queue queue) {
         Queue copy = copy(queue);
         String result = "";
-        while(!copy.isEmpty()) {
+        while (!copy.isEmpty()) {
             int first = copy.getFirst();
             result = first + "\t" + result;
             copy.remove();
         }
-        if(!result.isEmpty()) {
+        if (!result.isEmpty()) {
             System.out.println(result.substring(0, result.length() - 1));
         }
         System.out.println();
@@ -46,19 +46,19 @@ public class QueueUtil {
     public static void reverse(Queue queue) {
         Stack stack = new StaticStack();
 
-        while(!queue.isEmpty()) {
+        while (!queue.isEmpty()) {
             stack.add(queue.getFirst());
             queue.remove();
         }
 
-        while(!stack.isEmpty()) {
+        while (!stack.isEmpty()) {
             queue.add(stack.getTop());
             stack.remove();
         }
     }
 
     public static void reverse2(Queue queue) {
-        if(queue.isEmpty()) {
+        if (queue.isEmpty()) {
             return;
         }
         int first = queue.getFirst();
@@ -72,26 +72,26 @@ public class QueueUtil {
     // q3: -
 
     public static void reverse3(Queue queue) {
-        if(queue == null) {
+        if (queue == null) {
             return;
         }
         Queue result = new StaticQueue();
         Queue aux = new StaticQueue();
 
-        if(queue.isEmpty()) {
+        if (queue.isEmpty()) {
             return;
         }
 
-        while(!queue.isEmpty()) {
+        while (!queue.isEmpty()) {
             int first = queue.getFirst();
 
             aux.add(first);
-            while(!result.isEmpty()) {
+            while (!result.isEmpty()) {
                 aux.add(result.getFirst());
                 result.remove();
             }
 
-            while(!aux.isEmpty()) {
+            while (!aux.isEmpty()) {
                 result.add(aux.getFirst());
                 aux.remove();
             }
@@ -99,7 +99,7 @@ public class QueueUtil {
             queue.remove();
         }
 
-        while(!result.isEmpty()) {
+        while (!result.isEmpty()) {
             queue.add(result.getFirst());
             result.remove();
         }
@@ -108,13 +108,13 @@ public class QueueUtil {
     public static void reverse4(Queue queue) {
         Queue result = new StaticQueue();
 
-        while(!queue.isEmpty()) {
+        while (!queue.isEmpty()) {
             int last = getLast(queue);
             result.add(last);
             removeLast(queue);
         }
 
-        while(!result.isEmpty()) {
+        while (!result.isEmpty()) {
             queue.add(result.getFirst());
             result.remove();
         }
@@ -123,29 +123,29 @@ public class QueueUtil {
     // TODO Tiene un bug
     private static void removeLast(Queue queue) {
         Queue aux = new StaticQueue();
-        while(!queue.isEmpty()) {
+        while (!queue.isEmpty()) {
             int first = queue.getFirst();
             queue.remove();
-            if(queue.isEmpty()) {
+            if (queue.isEmpty()) {
                 break;
             }
             aux.add(first);
         }
 
-        while(!aux.isEmpty()) {
+        while (!aux.isEmpty()) {
             queue.add(aux.getFirst());
             aux.remove();
         }
     }
 
     private static int getLast(Queue queue) {
-        if(queue == null || queue.isEmpty()) {
+        if (queue == null || queue.isEmpty()) {
             throw new RuntimeException("No hay elementos, entonces no existe un último elemeto");
         }
 
         int first = queue.getFirst();
         queue.remove();
-        if(queue.isEmpty()) {
+        if (queue.isEmpty()) {
             queue.add(first);
             return first;
         }

@@ -1,7 +1,5 @@
 package org.example.model;
 
-import org.example.util.SetUtil;
-
 public class StaticDictionary implements Dictionary {
 
     private static final int MAX_SIZE = 10000;
@@ -16,8 +14,8 @@ public class StaticDictionary implements Dictionary {
 
     @Override
     public void add(int k, int v) {
-        for(int i = 0; i < count; i++) {
-            if(keys[i] == k) {
+        for (int i = 0; i < count; i++) {
+            if (keys[i] == k) {
                 throw new RuntimeException("La clave ya exista");
             }
         }
@@ -29,8 +27,8 @@ public class StaticDictionary implements Dictionary {
 
     @Override
     public void remove(int k, int v) {
-        for(int i = 0; i < count; i++) {
-            if(keys[i] == k) {
+        for (int i = 0; i < count; i++) {
+            if (keys[i] == k) {
                 keys[i] = keys[count - 1];
                 values[i] = values[count - 1];
                 count--;
@@ -42,7 +40,7 @@ public class StaticDictionary implements Dictionary {
     @Override
     public Set getKeys() {
         Set result = new StaticSet();
-        for(int i = 0; i < count; i++) {
+        for (int i = 0; i < count; i++) {
             result.add(keys[i]);
         }
         return result;
@@ -50,8 +48,8 @@ public class StaticDictionary implements Dictionary {
 
     @Override
     public int getValue(int k) {
-        for(int i = 0; i < count; i++) {
-            if(keys[i] == k) {
+        for (int i = 0; i < count; i++) {
+            if (keys[i] == k) {
                 return values[i];
             }
         }

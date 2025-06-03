@@ -13,7 +13,7 @@ public class StaticStack implements Stack {
 
     @Override
     public void add(int a) {
-        if(count == MAX) {
+        if (count == MAX) {
             throw new RuntimeException("Stack overflow");
         }
         array[count] = a;
@@ -22,7 +22,7 @@ public class StaticStack implements Stack {
 
     @Override
     public void remove() {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             throw new RuntimeException("Stack is empty");
         }
         count--;
@@ -30,7 +30,7 @@ public class StaticStack implements Stack {
 
     @Override
     public int getTop() {
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             throw new RuntimeException("Stack is empty");
         }
         return array[count - 1];
