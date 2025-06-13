@@ -25,11 +25,17 @@ public class StaticBinaryTree implements BinaryTree {
 
     @Override
     public StaticBinaryTree getLeft() {
+        if(2*indexRoot + 1 >= this.values.length) {
+            return null;
+        }
         return new StaticBinaryTree(2*indexRoot + 1, values);
     }
 
     @Override
     public StaticBinaryTree getRight() {
+        if(2*indexRoot + 2 >= this.values.length) {
+            return null;
+        }
         return new StaticBinaryTree(2*indexRoot + 2, values);
     }
 

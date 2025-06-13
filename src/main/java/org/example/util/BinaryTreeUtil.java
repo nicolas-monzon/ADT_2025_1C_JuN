@@ -72,5 +72,39 @@ public class BinaryTreeUtil {
                 height(binaryTree.getLeft()) == height(binaryTree.getRight());
     }
 
+    public static boolean isSBT(BinaryTree binaryTree) {
+        return isSBT(binaryTree, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    }
+
+    private static boolean isSBT(BinaryTree binaryTree, int n, int m) {
+        if(binaryTree == null) {
+            return true;
+        }
+
+        if(!isInRange(binaryTree.getRoot(), n, m)) {
+            return false;
+        }
+
+        return isSBT(binaryTree.getLeft(), n, Math.min(m, binaryTree.getRoot())) &&
+                isSBT(binaryTree.getRight(), Math.max(n, binaryTree.getRoot()), m);
+    }
+
+    private static boolean isInRange(int v, int from, int to) {
+        return v > from && v < to;
+    }
+
+    public static boolean isBalanced(BinaryTree binaryTree) {
+        if(binaryTree == null) {
+            return true;
+        }
+        if(!isBalanced(binaryTree.getLeft())) {
+            return false;
+        }
+        if(!isBalanced(binaryTree.getRight())) {
+            return false;
+        }
+        int diff = height(binaryTree.getLeft()) - height(binaryTree.getRight());
+        return diff >= -1 && diff <= 1;
+    }
 
 }
