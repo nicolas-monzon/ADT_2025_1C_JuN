@@ -23,7 +23,7 @@ public class DynamicPriorityQueue implements PriorityQueue {
             current = current.getNext();
         }
         if (priority >= current.getPriority()) {
-            current.setNext(new PriorityQueueNode(value, priority, first));
+            current.setNext(new PriorityQueueNode(value, priority, null));
             return;
         }
 
