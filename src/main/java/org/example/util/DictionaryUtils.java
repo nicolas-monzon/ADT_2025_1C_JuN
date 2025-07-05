@@ -1,7 +1,7 @@
 package org.example.util;
 
 import org.example.model.*;
-import org.example.model.node.MultipleDictionary;
+import org.example.model.MultipleDictionary;
 
 public class DictionaryUtils {
 

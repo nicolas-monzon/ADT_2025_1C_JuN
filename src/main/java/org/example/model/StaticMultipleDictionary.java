@@ -1,7 +1,5 @@
 package org.example.model;
 
-import org.example.model.node.MultipleDictionary;
-
 public class StaticMultipleDictionary implements MultipleDictionary {
 
     private static final int MAX_SIZE = 10000;

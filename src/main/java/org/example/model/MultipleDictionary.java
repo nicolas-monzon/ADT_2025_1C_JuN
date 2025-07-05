@@ -1,7 +1,4 @@
-package org.example.model.node;
-
-import org.example.model.List;
-import org.example.model.Set;
+package org.example.model;
 
 public interface MultipleDictionary {
 
